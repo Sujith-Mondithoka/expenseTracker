@@ -41,7 +41,7 @@ const ExpenseTracker = () => {
 
     setExpenseList(items || []);
     setIsMounted(true);
-  },[]);
+  }, []);
   useEffect(() => {
     if (expenseList.length > 0 || isMounted) {
       localStorage.setItem("expenses", JSON.stringify(expenseList));
@@ -55,20 +55,24 @@ const ExpenseTracker = () => {
           0
         )
       );
-    }else{
+    } else {
       setExpense(0);
     }
 
-    let foodSpends=0,entertainmentSpends=0,travelSpends=0;
-    let foodCount=0,entertainmentCount=0,travelCount=0
+    let foodSpends = 0,
+      entertainmentSpends = 0,
+      travelSpends = 0;
+    let foodCount = 0,
+      entertainmentCount = 0,
+      travelCount = 0;
     expenseList.forEach((item) => {
-      if(item.category === "food"){
+      if (item.category === "food") {
         foodSpends += Number(item.price);
         foodCount++;
-      }else if (item.category === "entertainment"){
+      } else if (item.category === "entertainment") {
         entertainmentSpends += Number(item.price);
         entertainmentCount++;
-      }else if(item.category === "travel"){
+      } else if (item.category === "travel") {
         travelSpends += Number(item.price);
         travelCount++;
       }
@@ -77,14 +81,14 @@ const ExpenseTracker = () => {
       food: foodSpends,
       travel: travelSpends,
       entertainment: entertainmentSpends,
-    })
+    });
 
     setCategoryCount({
       food: foodCount,
       travel: travelCount,
       entertainment: entertainmentCount,
-    })
-  },[expenseList]);
+    });
+  }, [expenseList]);
 
   useEffect(() => {
     if (isMounted) {
@@ -114,31 +118,47 @@ const ExpenseTracker = () => {
           handleClick={() => {
             setIsOpenExpense(true);
           }}
-          />
-        <PieChart data={[
-
-          { name: "Food", value: categorySpends.food},
-          { name: "Travel", value: categorySpends.travel},
-          { name: "Entertainment", value: categorySpends.entertainment},
-          
-        ]}
+        />
+        <PieChart
+          data={[
+            { name: "Food", value: categorySpends.food },
+            { name: "Travel", value: categorySpends.travel },
+            { name: "Entertainment", value: categorySpends.entertainment },
+          ]}
         />
       </div>
-        <div className={styles.transactionWrapper}>
-          <TransactionList transactions={expenseList} editTransactions={setExpenseList} title="Recent Transactions" balance={balance} setBalance={setBalance}/>
-          <BarChart data={[
-          { name: "Entertainment", value: categorySpends.entertainment},
-          { name: "Food", value:categorySpends.food},
-          { name: "Travel", value: categorySpends.travel},
-         ]}
-         />
-        </div>
-        <Modal isOpen={isOpenExpense} setIsOpen={setIsOpenExpense}>
-          <ExpenseForm setIsOpen={setIsOpenExpense} expenseList={expenseList} setExpenseList={setExpenseList} setBalance={setBalance} balance={balance}/>
-        </Modal>
-        <Modal isOpen={isOpenBalance} setIsOpen={setIsOpenBalance}>
-          <AddBalanceForm setIsOpen={setIsOpenBalance} setBalance={setBalance} balance={balance}/>
-        </Modal>
+      <div className={styles.transactionWrapper}>
+        <TransactionList
+          transactions={expenseList}
+          editTransactions={setExpenseList}
+          title="Recent Transactions"
+          balance={balance}
+          setBalance={setBalance}
+        />
+        <BarChart
+          data={[
+            { name: "Entertainment", value: categorySpends.entertainment },
+            { name: "Food", value: categorySpends.food },
+            { name: "Travel", value: categorySpends.travel },
+          ]}
+        />
+      </div>
+      <Modal isOpen={isOpenExpense} setIsOpen={setIsOpenExpense}>
+        <ExpenseForm
+          setIsOpen={setIsOpenExpense}
+          expenseList={expenseList}
+          setExpenseList={setExpenseList}
+          setBalance={setBalance}
+          balance={balance}
+        />
+      </Modal>
+      <Modal isOpen={isOpenBalance} setIsOpen={setIsOpenBalance}>
+        <AddBalanceForm
+          setIsOpen={setIsOpenBalance}
+          setBalance={setBalance}
+          balance={balance}
+        />
+      </Modal>
     </div>
   );
 };
