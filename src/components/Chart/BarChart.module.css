@@ -1,0 +1,67 @@
+
+
+.expenseChart {
+  margin-top: 15px;
+  margin-right: 20px;
+  width: 35%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.expenseChart h2 {
+  font-family: Ubuntu;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 32.17px;
+    text-align: left;
+    color: white;
+}
+
+.barWrapper {
+  background: white;
+  border-radius: 15px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+  @media (max-width: 1024px) {
+    .expenseChart {
+      width: 100%;
+      height: fit-content;
+    }
+  
+    .barWrapper {
+      width: 100%;
+      height: fit-content;
+      align-items: center;
+    }
+  
+    .expenseChart h2 {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .expenseChart {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .barWrapper {
+      width: 100%;
+      height: fit-content;
+    }
+  
+    .expenseChart h2 {
+      font-size: 18px;
+    }
+  }
+  

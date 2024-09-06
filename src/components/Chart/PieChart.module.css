@@ -1,0 +1,17 @@
+
+.pieChartContainer {
+    width: 199px;
+    height: 199px;
+    position: absolute;
+    top: 118px;
+    left: 962px;
+    opacity: 1;
+    background: transparent; /* No background for the container */
+  }
+  
+  .pieChart {
+    width: 100%;
+    height: 100%;
+  }
+  
+  
