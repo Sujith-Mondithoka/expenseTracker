@@ -73,7 +73,7 @@ export default function ExpenseForm({
   };
   useEffect(() => {
     if (editId) {
-      const expenseData = expenseList.find((item) => item.id == editId);
+      const expenseData = expenseList.find((item) => item.id === editId);
 
       setFormData({
         title: expenseData.title,

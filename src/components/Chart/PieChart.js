@@ -50,7 +50,6 @@ export default function PieChartComponent({ data }) {
           dataKey="value"
         >
           {data.map((entry, index) => (
-            
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
