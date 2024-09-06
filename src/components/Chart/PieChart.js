@@ -1,12 +1,5 @@
-import React, { PureComponent } from "react";
-import {
-  PieChart,
-  Pie,
-  Sector,
-  Cell,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
+import React from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const COLORS = ["#A000FF", "#FF9304", "#FDE006"];
 const RADIAN = Math.PI / 180;
@@ -28,7 +21,7 @@ const renderCustomizedLabel = ({
       x={x}
       y={y}
       fill="white"
-      textAnchor={x > cx ? "start" : "end"}
+      textAnchor={x > cx ? "start" : "end" }
       dominantBaseline="central"
     >
       {`${(percent * 100).toFixed(0)}%`}
